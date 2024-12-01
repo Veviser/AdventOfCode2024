@@ -9,9 +9,6 @@
 
     <ItemGroup>
       <None Remove="01\input.txt" />
-      <Content Include="01\input.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
     </ItemGroup>
 
 </Project>
