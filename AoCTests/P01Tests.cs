@@ -32,14 +32,7 @@ public class P01Tests
         Dictionary<int, int> memoizedNumbers = new Dictionary<int, int>();
         for (int i = 0; i < input[0].Length; i++)
         {
-            if (memoizedNumbers.TryGetValue(input[1][i], out var oldVal))
-            {
-                memoizedNumbers[input[1][i]] = oldVal + 1;
-            }
-            else
-            {
-                memoizedNumbers[input[1][i]] = 0;
-            }
+            P01.PopulateMemoizedNumbers(memoizedNumbers, input, i);
         }
 
         var sum = _.PartTwo(input, memoizedNumbers);

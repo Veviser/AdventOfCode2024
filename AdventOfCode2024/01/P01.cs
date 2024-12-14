@@ -22,7 +22,7 @@ public class P01 : IProblem
     public int PartOne(int[][] input)
     {
         var sum = 0;
-        for (int i = 0; i < input[i].Length; i++)
+        for (int i = 0; i < input[0].Length; i++)
         {
             sum += Math.Abs(input[0][i] - input[1][i]);
         }
@@ -57,16 +57,21 @@ public class P01 : IProblem
                 input[0][i] = int.Parse(line[0]);
                 input[1][i] = int.Parse(line[1]);
                 
-                if (numbers.TryGetValue(input[1][i], out var oldVal))
-                {
-                    numbers[input[1][i]] = oldVal + 1;
-                }
-                else
-                {
-                    numbers[input[1][i]] = 0;
-                }
+                PopulateMemoizedNumbers(numbers, input, i);
             }
         }
         return input;
+    }
+
+    public static void PopulateMemoizedNumbers(Dictionary<int, int> numbers, int[][] input, int i)
+    {
+        if (numbers.TryGetValue(input[1][i], out var oldVal))
+        {
+            numbers[input[1][i]] = oldVal + 1;
+        }
+        else
+        {
+            numbers[input[1][i]] = 1;
+        }
     }
 }
